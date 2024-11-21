@@ -1,0 +1,73 @@
+QUERY- there is an IT company data base which has following tables which are connected  - EMPLOYEES table ( EMP ID , FIRST NAME , LAST NAME , DEPT ID , SALARY, JOIN DATE )
+DEPARTMENTS-  ( DEPT ID, DEPt NAME )
+projects _ ( project id, proj name , budget ) 
+employee projects - ( employee id , pro id, assigned data, and role )
+
+
+
+RECORDS- employees table - 4 departs ( IT < finance <  HR < MARKETING ) 
+records - ( 
+projects table records  ( proj 1 _ website , proj _mobile app , projec3 _ data  migration , proj4 - AI, proj5 _ marketing ) 
+employee projects - ( emp1 , project id 1 , assigned data      , role - developer , project manage analyst , accountant , hr specialist , finance analyst , data scientists,
+  
+
+
+
+Q- get all employees names and their join dates
+Q- list all dprts
+Q-get total no of employees
+Q-find highest salary in company
+Q- list all projects with their budgets
+Q- get avg salary of all emplyess
+Q- find total budgets allocated to proejcts
+Q- retrive employess who joined b4 2020
+Q- list all  disnct roles in prjects
+Q- get count of projects each employee is assigned tp
+Q-find wmployees working in a specific deprts
+Q- get tota;l no of employees in eah deprtmnsts
+Q-list empltyes with a salary above the companies AVG salary 
+Q- retrive the top 5 highest paid employees
+Q-find projets more than 3 employees assugned
+Q-calculate the total salary expense by daprtment
+Q-list emplywss who have worked on multiple projects find departems with AVG emplyee salaary above 70K
+Q- retrive all employees who are project managers
+Q-list projects with no employees assigned
+
+
+
+
+CREATE TABLE DEPARTMENTSW (
+    DEPT_ID INT PRIMARY KEY,            
+    DEPT_NAME VARCHAR(100) NOT NULL      
+);
+
+
+CREATE TABLE EMPLOYEESW (
+    EMP_ID INT PRIMARY KEY,             
+    FIRST_NAME VARCHAR(50) NOT NULL,    
+    LAST_NAME VARCHAR(50) NOT NULL,     
+    DEPT_ID INT,                        
+    SALARY DECIMAL(10, 2),              
+    JOIN_DATE DATE,                     
+    FOREIGN KEY (DEPT_ID) REFERENCES DEPARTMENTS(DEPT_ID) 
+);
+
+
+
+CREATE TABLE PROJECTSW (
+    PROJECT_ID INT PRIMARY KEY,          
+    PROJ_NAME VARCHAR(100) NOT NULL,     
+    BUDGET DECIMAL(15, 2)               
+);
+
+CREATE TABLE EMPLOYEE_PROJECTSW (
+    EMP_ID INT,                         
+    PROJ_ID INT,                        
+    ASSIGNED_DATE DATE,                 
+    ROLE VARCHAR(50),                   
+    PRIMARY KEY (EMP_ID, PROJ_ID),      
+    FOREIGN KEY (EMP_ID) REFERENCES EMPLOYEES(EMP_ID),  
+    FOREIGN KEY (PROJ_ID) REFERENCES PROJECTSW(PROJECT_ID)
+);
+
+
